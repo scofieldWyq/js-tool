@@ -1,0 +1,11 @@
+{
+  "name": "js-tool",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "git@github.com:scofieldWyq/js-tool.git",
+  "author": "wuyingqiang <147036scofield@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "tsc_test": "tsc; node .dist/build/tests/TestNumberHumanRead.js"
+  }
+}
