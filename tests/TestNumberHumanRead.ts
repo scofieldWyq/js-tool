@@ -1,9 +1,7 @@
 const assert = require('assert')
 import { numberOfHumanRead } from "../src/NumberhumanRead";
 
-
-
-
+/* unit tests */
 assert('123.12', numberOfHumanRead(123.12))
 assert('1.234K', numberOfHumanRead(1234))
 assert('12.345K', numberOfHumanRead(12345))
