@@ -5,44 +5,35 @@
 const INDEX = ["K", "M", "B", "T", "P"];
 const COUNT = 3;
 
-export function numberOfHumanRead (num: number): string {
-    if (num === 0) {
+/**
+ * 将 num 转换为 人类可读的数字字符
+ * 
+ * @param num 需要转换的数字
+ * @param decimals 数字转换的精度
+ * @returns 用户可读的数字字符
+ */
+export function numberOfHumanRead (num: number, decimals=COUNT): string {
+    if (num === 0) { // when 0 just return.
         return '0'
     }
-
+    const DECIMALS = 10 ** decimals
     let numberStr = ''
     let __index = null
 
-    /* transform */
-    if (num > 1000) {
-        const _index = Math.floor((parseInt(num.toString()) + "").length / COUNT);
-        __index = INDEX[_index - 1]
-        numberStr = (num / 1000 ** _index).toFixed(COUNT);
+    /* transform - 数字转换 */
+    if (num > DECIMALS) {
+        const isFull = (parseInt(num.toString()) + "").length % decimals === 0; // 是否完全为 decimals 的倍数
+        const _index = Math.floor((parseInt(num.toString()) + "").length / decimals);
+        __index =  INDEX[_index - (isFull ? 2: 1)]
+        numberStr = (num / DECIMALS ** (_index - (isFull ? 1: 0))).toFixed(decimals);
     } else {
-        numberStr = num.toFixed(COUNT) + "";
+        numberStr = num.toFixed(decimals) + "";
     }
 
-    /* redecorated */
-    const afterDot = numberStr.split(".")[1]
-    const beforeDot = numberStr.split(".")[0]
-
-    let humanString = ''
-    let count = 0
-
-    for(let i = beforeDot.length - 1; i >= 0; i --, count++ ) {
-        if (count === 3) {
-            humanString = ',' + humanString
-        }
-        humanString = beforeDot[i] + humanString
+    /* redecorated - 去掉尾部的 0 */
+    while (numberStr[numberStr.length - 1] === '0') {
+        numberStr = numberStr.substring(0, numberStr.length - 1)
     }
 
-    if (afterDot) {
-        humanString += "." + afterDot
-    }
-    
-    while (humanString[humanString.length - 1] === '0') {
-        humanString = humanString.substring(0, humanString.length - 1)
-    }
-
-    return humanString + (__index || '');
+    return numberStr + (__index || '');
 }
