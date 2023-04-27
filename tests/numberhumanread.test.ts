@@ -4,20 +4,23 @@ import {expect, jest, test} from '@jest/globals';
 
 /* unit tests */
 test("Run numberOfHumanRead test", () => {
-    expect(numberOfHumanRead(123.12)).toBe('123.12')
-    // assert('1.234K', numberOfHumanRead(1234))
-    // assert('12.345K', numberOfHumanRead(12345))
-    // assert('123.456K', numberOfHumanRead(123456))
-    // assert('1.234M', numberOfHumanRead(1234567))
-    // assert('12.345M', numberOfHumanRead(12345678))
-    // assert('123.456M', numberOfHumanRead(123456789))
-    // assert('1.234B', numberOfHumanRead(1234567891))
-    // assert('12.345B', numberOfHumanRead(12345678912))
-    // assert('123.456B', numberOfHumanRead(123456789123))
-    // assert('1.234T', numberOfHumanRead(1234567891234))
-    // assert('12.345T', numberOfHumanRead(12345678912345))
-    // assert('123.456T', numberOfHumanRead(123456789123456))
-    // assert('1.234P', numberOfHumanRead(1234567891234567))
-    // assert('12.345P', numberOfHumanRead(12345678912345678))
-    // assert('123.456P', numberOfHumanRead(123456789123456789))
+    expect(numberOfHumanRead(0.12312)).toBe('0.123');
+    expect(numberOfHumanRead(1.2312)).toBe('1.231');
+    expect(numberOfHumanRead(12.312)).toBe('12.312');
+    expect(numberOfHumanRead(123.12)).toBe('123.12');
+    expect(numberOfHumanRead(1234)).toBe('1.234K'); 
+    expect(numberOfHumanRead(12345)).toBe('12.345K'); 
+    expect(numberOfHumanRead(123456)).toBe('123.456K'); 
+    expect(numberOfHumanRead(1234567)).toBe('1.235M'); 
+    expect(numberOfHumanRead(12345678)).toBe('12.346M');
+    expect(numberOfHumanRead(123456789)).toBe('123.457M'); 
+    expect(numberOfHumanRead(1234567891)).toBe('1.235B'); 
+    expect(numberOfHumanRead(12345678912)).toBe('12.346B'); 
+    expect(numberOfHumanRead(123456789123)).toBe('123.457B'); 
+    expect(numberOfHumanRead(1234567891234)).toBe('1.235T'); 
+    expect(numberOfHumanRead(12345678912345)).toBe('12.346T'); 
+    expect(numberOfHumanRead(123456789123456)).toBe('123.457T'); 
+    expect(numberOfHumanRead(1234567891234567)).toBe('1.235P'); 
+    expect(numberOfHumanRead(12345678912345678)).toBe('12.346P'); 
+    expect(numberOfHumanRead(123456789123456789)).toBe('123.457P'); 
 })
